@@ -1,0 +1,274 @@
+import static java.lang.System.out;
+
+
+
+
+
+
+
+import java.io.BufferedReader;
+
+
+
+
+
+
+
+import java.io.FileReader;
+
+
+
+import java.io.FileWriter;
+
+
+
+import java.io.IOException;
+
+
+
+import java.util.Scanner;
+
+
+
+
+
+
+
+public class NotesManager {
+
+
+
+final static String fileName= "Notes.txt";
+
+
+
+private static Scanner scanner = new Scanner(System.in);
+
+
+
+public static void main(String[] args) {
+
+
+
+while(true) {
+
+
+
+out.println("Welcome to notes manager");
+
+
+
+out.println("Enter the number of operation to do");
+
+
+
+out.println("1.Write note");
+
+
+
+out.println("2.Veiw all note");
+
+
+
+out.println("3.Exit");
+
+
+
+int choice = Integer.parseInt(scanner.nextLine());
+
+
+
+switch(choice) {
+
+
+
+case 1:
+
+
+
+writeToFile();
+
+
+
+break;
+
+
+
+case 2:
+
+
+
+readfromFile();
+
+
+
+break;
+
+
+
+case 3:
+
+
+
+break;
+
+
+
+}
+
+
+
+
+
+}
+
+
+
+
+
+}
+
+
+
+private static void readfromFile() {
+
+
+
+try(BufferedReader reader=new BufferedReader(new FileReader(fileName))){
+
+
+
+out.println("----Notes----");
+
+
+
+String line;
+
+
+
+while ((line = reader.readLine()) != null) {
+
+
+
+out.println(line);
+
+
+
+}
+
+
+
+} catch (Exception e) {
+
+
+
+out.println("An error occured : "+e.getMessage());
+
+
+
+}
+
+
+
+
+
+}
+
+
+
+private static void writeToFile() {
+
+
+
+out.println("Enter your note below. Type 'DONE' on a new line to save and finish.");
+
+
+
+StringBuilder noteContent = new StringBuilder();
+
+
+
+String line;
+
+
+
+
+
+
+
+while (!(line = scanner.nextLine()).equalsIgnoreCase("DONE")) {
+
+
+
+noteContent.append(line).append("\n");
+
+
+
+}
+
+
+
+
+
+
+
+if (noteContent.length() > 0) {
+
+
+
+
+
+try (FileWriter writer = new FileWriter(fileName, true)) {
+
+
+
+writer.write(noteContent.toString());
+
+
+
+out.println("Note saved successfully!");
+
+
+
+} catch (IOException e) {
+
+
+
+out.println("An error occurred while writing the note: " + e.getMessage());
+
+
+
+}
+
+
+
+} else {
+
+
+
+out.println("No note was entered.");
+
+
+
+}
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+}
+
+
+
