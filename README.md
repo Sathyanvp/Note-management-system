@@ -18,14 +18,17 @@ Enter the number of operation to do
 2.Veiw all note
 3.Exit
 ## How to Use
-##To Write a Note:
+
+## To Write a Note:
+
     Choose option 1.
 
        1.Type your note line-by-line.
 
        2.Enter DONE on a new line to save and exit.
 
-##To View Notes:
+## To View Notes:
+
     Choose option 2.
 
         All previously saved notes will be displayed.
